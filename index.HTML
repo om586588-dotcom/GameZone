@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameZone - Venta de Videojuegos</title>
+<style>
+        /* 12. DISEÑO CON CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+ 
+        h1 {
+            color: #00ff88;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+ 
+        h2 {
+            color: #00ff88;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+ 
+        /* Encabezado */
+        header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-bottom: 4px solid #00ff88;
+        }
+ 
+        .header-container {
+            display: flex;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+ 
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #00ff88;
+        }
+ 
+        .frase-encabezado {
+            font-style: italic;
+            color: #aaaaaa;
+            margin: 5px 0 0 0;
+        }
+ 
+        /* Menú de navegación */
+        nav {
+            background-color: #1f1f1f;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+ 
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+ 
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+        }
+ 
+        nav ul li a:hover {
+            background-color: #00ff88;
+            color: #121212;
+        }
+ 
+        /* Secciones generales */
+        .seccion {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-bottom: 1px solid #222;
+        }
+ 
+        .subtitulo-seccion {
+            text-align: center;
+            font-style: italic;
+            color: #aaaaaa;
+            margin-bottom: 30px;
+        }
+ 
+        /* Sección Inicio */
+        .imagen-principal {
+            width: 100%;
+            max-height: 4000px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+            margin-bottom: 20px;
+        }
+ 
+        .texto-intro {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            color: #cccccc;
+        }
+ 
+        /* Botones */
+        .boton, .boton-enviar {
+            background-color: #00ff88;
+            color: #121212;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+ 
+        .boton:hover, .boton-enviar:hover {
+            background-color: #00cc6a;
+        }
+ 
+        /* Sección Nosotros */
+        .nosotros-contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+ 
+        .nosotros-texto {
+            flex: 1;
+            min-width: 280px;
+        }
+ 
+        .nosotros-texto p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #cccccc;
+        }
+ 
+        .nosotros-imagenes {
+            flex: 1;
+            display: flex;
+            gap: 15px;
+            min-width: 280px;
+        }
+ 
+        .img-secundaria {
+            width: 50%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 2px solid #00ff88;
+        }
+ 
+        /* Productos / Servicios Grid */
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+ 
+        .producto-card {
+            background-color: #1f1f1f;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+ 
+        .producto-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+ 
+        .producto-card h3 {
+            color: #ffffff;
+            margin: 15px 0 10px 0;
+        }
+ 
+        .producto-card p {
+            color: #aaaaaa;
+            font-size: 0.9rem;
+        }
+ 
+        .precio {
+            display: block;
+            font-weight: bold;
+            color: #00ff88;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+ 
+        /* Galería Grid */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+ 
+        .galeria-item {
+            position: relative;
+            background: #1f1f1f;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+ 
+        .galeria-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+ 
+        .galeria-item span {
+            display: block;
+            padding: 8px;
+            text-align: center;
+            background-color: rgba(0, 255, 136, 0.9);
+            color: #121212;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+ 
+        /* Información Adicional */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+ 
+        .info-card {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #00ff88;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+ 
+        .info-card h3 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+ 
+        .info-card p {
+            color: #cccccc;
+        }
+ 
+        /* Contacto y Formulario */
+        .contacto-contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+ 
+        .contacto-info, .formulario-visual {
+            flex: 1;
+            min-width: 280px;
+            background-color: #1f1f1f;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+ 
+        .contacto-info p {
+            color: #cccccc;
+        }
+ 
+        .redes-titulo {
+            margin-top: 20px;
+            color: #00ff88;
+        }
+ 
+        .redes-enlaces a {
+            display: inline-block;
+            margin-right: 15px;
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: bold;
+        }
+ 
+        .redes-enlaces a:hover {
+            text-decoration: underline;
+        }
+ 
+        .formulario-visual label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+ 
+        .formulario-visual input, .formulario-visual textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            color: #ffffff;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+ 
+        .formulario-visual button {
+            margin-top: 15px;
+            width: 100%;
+        }
+ 
+        /* Mapa */
+        .imagen-mapa {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #333;
+        }
+ 
+        /* Footer */
+        footer {
+            background-color: #1f1f1f;
+            color: #aaaaaa;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+        }
+</style>
+</head>
+<body>
+ 
+    <!-- A. ENCABEZADO -->
+<header>
+<div class="header-container">
+<img src="Logotipo GameZone.png" alt="Logotipo GameZone" class="logo">
+<div>
+<h1>GAMEZONE</h1>
+<p class="frase-encabezado">"Level up your gaming experience."</p>
+</div>
+</div>
+</header>
+ 
+    <!-- 3. MENÚ DE NAVEGACIÓN -->
+<nav>
+<ul>
+<li><a href="#inicio">INICIO</a></li>
+<li><a href="#nosotros">NOSOTROS</a></li>
+<li><a href="#servicios">SERVICIOS</a></li>
+<li><a href="#galeria">GALERÍA</a></li>
+<li><a href="#informacion">INFORMACIÓN</a></li>
+<li><a href="#contacto">CONTACTO</a></li>
+<li><a href="#ubicacion">UBICACIÓN</a></li>
+</ul>
+</nav>
+ 
+    <!-- 4. SECCIÓN INICIO -->
+<section id="inicio" class="seccion">
+<h2>Bienvenidos a GameZone</h2>
+<p class="subtitulo-seccion">"El universo de los videojuegos al alcance de tus manos."</p>
+<img src="Logotipo GameZone.png" alt="Logotipo GameZone" class="imagen-principal">
+<p class="texto-intro">
+            Encuentra los estrenos más esperados, consolas de última generación, accesorios profesionales y los mejores clásicos coleccionables. Todo lo que un verdadero centenial o gamer apasionado necesita en un solo lugar.
+</p>
+<div style="text-align: center;">
+<a href="#servicios" class="boton">Ver Catálogo</a>
+</div>
+</section>
+ 
+    <!-- 5. SECCIÓN NOSOTROS -->
+<section id="nosotros" class="seccion">
+<h2 id="nosotros-titulo">Nosotros</h2>
+<div class="nosotros-contenedor">
+<div class="nosotros-texto">
+<p>
+    Somos una comunidad apasionada por la cultura gamer y la vanguardia interactiva, dedicada a explorar, analizar y documentar el vasto universo de los videojuegos. Desde nuestra base de operaciones en Guanajuato, construimos un espacio de referencia donde los jugadores de todos los niveles encuentran reseñas imparciales, guías detalladas y las noticias más relevantes de la industria. No solo compartimos información; vivimos cada historia, dominamos cada mecánica y analizamos las últimas tendencias para traerte la cobertura más completa y dinámica del entretenimiento digital.
+ 
+    Nuestro objetivo fundamental es conectar a la comunidad gamer a través de contenido claro, entretenido y de alta precisión, convirtiéndonos en el portal definitivo de consulta para cada lanzamiento y clásico. Lo que nos diferencia del resto es nuestro enfoque fresco y directo, libre de rodeos, donde la calidad visual y la pasión por el detalle garantizan una experiencia inmersiva. No somos un simple sitio de noticias: somos la guía estratégica que acompaña a cada jugador en su viaje por las distintas plataformas.
+                
+</p>
+</div>
+<div class="nosotros-imagenes">
+<img src="Zona de videojuegos.png" alt="Zona de videojuegos" class="img-secundaria">
+<img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400" alt="Equipo de trabajo" class="img-secundaria">
+</div>
+</div>
+</section>
+ 
+    <!-- 6. SECCIÓN SERVICIOS O PRODUCTOS -->
+<section id="servicios" class="seccion">
+<h2>Productos Destacados</h2>
+<p class="subtitulo-seccion">Los títulos y equipos más populares del momento.</p>
+<div class="productos-grid">
+<div class="producto-card">
+<img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400" alt="Cyberpunk RPG">
+<h3>Cyber RPG 2077</h3>
+<p>Aventura de acción en mundo abierto con gráficos hiperrealistas de nueva generación.</p>
+<span class="precio">$1,299.00 MXN</span>
+</div>
+<div class="producto-card">
+<img src="https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=400" alt="Control Pro">
+<h3>Control Pro RGB</h3>
+<p>Mando inalámbrico con retroiluminación y gatillos adaptativos de alta precisión.</p>
+<span class="precio">$1,499.00 MXN</span>
+</div>
+<div class="producto-card">
+<img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400" alt="Teclado Mecánico">
+<h3>Teclado Mecánico Gamer</h3>
+<p>Switches ópticos ultra rápidos y diseño compacto con iluminación RGB personalizable.</p>
+<span class="precio">$1,899.00 MXN</span>
+</div>
+<div class="producto-card">
+<img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=400" alt="Headset Gamer">
+<h3>Headset 7.1 Surround</h3>
+<p>Audio espacial inmersivo con micrófono con cancelación de ruido y almohadillas de memoria.</p>
+<span class="precio">$999.00 MXN</span>
+</div>
+</div>
+</section>
+ 
+    <!-- 7. SECCIÓN GALERÍA -->
+<section id="galeria" class="seccion">
+<h2>Galería</h2>
+<p class="subtitulo-seccion">Conoce nuestras instalaciones y productos.</p>
+<div class="galeria-grid">
+<div class="galeria-item"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" alt="Fachada"><span>Fachada</span></div>
+<div class="galeria-item"><img src="Platillo 1.png" alt="Platillo 1"><span>Área de Consolas</span></div>
+<div class="galeria-item"><img src="Platillo 2.png" alt="Platillo 2"><span>Estantería de Juegos</span></div>
+<div class="galeria-item"><img src="Bebida.png" alt="Bebida"><span>Zona de Accesorios</span></div>
+<div class="galeria-item"><img src="Interior.png" alt="Interior"><span>Interior de la Tienda</span></div>
+<div class="galeria-item"><img src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=400" alt="Personal"><span>Personal de Soporte</span></div>
+</div>
+</section>
+ 
+    <!-- 8. SECCIÓN INFORMACIÓN -->
+<section id="informacion" class="seccion">
+<h2>Información de Interés</h2>
+<div class="info-grid">
+<div class="info-card">
+<h3>🎮 Historia</h3>
+<p>Quiénes son y qué hacen? Una comunidad apasionada que explora, analiza y documenta el universo de los videojuegos.</p>
+</div>
+<div class="info-card">
+<h3>👥 Comunidad</h3>
+<p>¿Cuál es su objetivo? Conectar a la comunidad gamer con información precisa y ser el portal definitivo de consulta.
+    ¿Qué los hace diferentes? Enfoque fresco y directo, calidad visual, precisión y una auténtica pasión por el detalle.</p>
+</div>
+<div class="info-card">
+<h3>⚡ Características</h3>
+<p>Garantía directa en hardware, apartado de preventas sin intereses y el programa de lealtad GamerPoints para canjear por descuentos en tus compras.</p>
+</div>
+</div>
+</section>
+ 
+    <!-- 9. SECCIÓN CONTACTO Y 10. REDES SOCIALES -->
+<section id="contacto" class="seccion">
+<h2>Contacto</h2>
+<div class="contacto-contenedor">
+<div class="contacto-info">
+<p><strong>Correo electrónico:</strong> soporte@gamezone.com</p>
+<p><strong>Teléfono:</strong> +52 477 987 6543</p>
+<p><strong>Dirección:</strong> Plaza Tecnológica #404, Local 12, León, Gto.</p>
+<p><strong>Horario:</strong> Lunes a Domingo de 10:00 AM a 8:00 PM</p>
+<h3 class="redes-titulo">Redes Sociales</h3>
+<div class="redes-enlaces">
+<a href="https://facebook.com" target="_blank">Facebook</a>
+<a href="https://instagram.com" target="_blank">Instagram</a>
+<a href="https://tiktok.com" target="_blank">TikTok</a>
+</div>
+</div>
+ 
+            <div class="formulario-visual">
+<h3>Envíanos un mensaje</h3>
+<form>
+<label for="nombre">Nombre:</label>
+<input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre...">
+ 
+                    <label for="correo">Correo:</label>
+<input type="email" id="correo" name="correo" placeholder="Escribe tu correo...">
+ 
+                    <label for="mensaje">Mensaje:</label>
+<textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+ 
+                    <button type="button" class="boton-enviar">ENVIAR</button>
+</form>
+</div>
+</div>
+</section>
+ 
+    <!-- 11. MAPA O UBICACIÓN -->
+<section id="ubicacion" class="seccion">
+<h2>¿Dónde nos encontramos?</h2>
+<p class="subtitulo-seccion">Ven a conocer nuestra sucursal física.</p>
+<div class="mapa-contenedor">
+<img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800" alt="Mapa de ubicación" class="imagen-mapa">
+<p style="text-align: center; margin-top: 15px;">
+<a href="https://maps.google.com" target="_blank" class="boton">Abrir en Google Maps</a>
+</p>
+</div>
+</section>
+ 
+    <!-- Pie de página -->
+<footer>
+<p>&copy; 2026 GameZone. Todos los derechos reservados.</p>
+</footer>
+ 
+</body>
+</html>
